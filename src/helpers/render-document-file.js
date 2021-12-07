@@ -226,6 +226,7 @@ function findXMLEquivalent(docxDocumentInstance, vNode, xmlFragment) {
             const emptyParagraphFragment = xmlBuilder.buildParagraph(null, {});
             xmlFragment.import(emptyParagraphFragment);
           } else if (childVNode.tagName === 'img') {
+            console.log('childVNode.tagName', childVNode.tagName);
             const imageFragment = buildImage(docxDocumentInstance, childVNode);
             if (imageFragment) {
               xmlFragment.import(imageFragment);

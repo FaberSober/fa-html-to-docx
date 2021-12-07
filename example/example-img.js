@@ -6,7 +6,7 @@ const HTMLtoDOCX = require('../dist/html-to-docx.umd');
 
 const filePath = './example/example.docx';
 
-const htmlString = `<img src="/api/v1/base/file/getFile?filePath=C:\\Users\\Farando\\Documents\\smart-std\\file\\base\\file\\20211207_163216\\head.png"/>`;
+const htmlString = `<img src="/api/v1/base/file/getFile?filePath=/Users/xupengfei/Documents/smart-std/file/base/file/20211207_205713//米老鼠生气了.jpg"/>`;
 
 (async () => {
   const fileBuffer = await HTMLtoDOCX(htmlString, null, {

@@ -484,14 +484,14 @@ class DocxDocument {
   }
 
   createMediaFileLocal(filePath) {
-    console.log('createMediaFileLocal', filePath);
+    console.log('createMediaFileLocal', filePath, fs.existsSync(filePath));
     if (!fs.existsSync(filePath)) {
-      console.warn('image file not found', filePath);
+      console.log('image file not found', filePath);
       throw new Error(`image file not found ${filePath}`);
     }
     console.log('base64FileContent start read');
     const base64FileContent = fs.readFileSync(filePath, { encoding: 'base64' });
-    console.log('base64FileContent', base64FileContent);
+    // console.log('base64FileContent', base64FileContent);
     // matches array contains file type in base64 format - image/jpeg and base64 stringified data
     const fileExtension = 'png';
 
