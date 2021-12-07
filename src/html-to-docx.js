@@ -1,7 +1,7 @@
 import { create } from 'xmlbuilder2';
 import VNode from 'virtual-dom/vnode/vnode';
 import VText from 'virtual-dom/vnode/vtext';
-import * as HTMLToVDOM_ from 'html-to-vdom';
+// import * as HTMLToVDOM_ from 'html-to-vdom';
 
 import { relsXML } from './schemas';
 import DocxDocument from './docx-document';
@@ -17,9 +17,9 @@ import {
   pointToHIP,
 } from './utils/unit-conversion';
 
-const HTMLToVDOM = HTMLToVDOM_;
+// const HTMLToVDOM = HTMLToVDOM_;
 
-const convertHTML = HTMLToVDOM({
+const convertHTML = require('html-to-vdom')({
   VNode,
   VText,
 });
