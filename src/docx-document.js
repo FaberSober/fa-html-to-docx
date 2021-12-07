@@ -1,6 +1,7 @@
 import { create, fragment } from 'xmlbuilder2';
 import * as shortid from 'shortid';
 
+import fs from 'fs';
 import {
   generateCoreXML,
   generateStylesXML,
@@ -122,6 +123,7 @@ class DocxDocument {
     this.generateNumberingXML = this.generateNumberingXML.bind(this);
     this.generateRelsXML = this.generateRelsXML.bind(this);
     this.createMediaFile = this.createMediaFile.bind(this);
+    this.createMediaFileLocal = this.createMediaFileLocal.bind(this);
     this.createDocumentRelationships = this.createDocumentRelationships.bind(this);
     this.generateHeaderXML = this.generateHeaderXML.bind(this);
     this.generateFooterXML = this.generateFooterXML.bind(this);
@@ -473,6 +475,25 @@ class DocxDocument {
     // matches array contains file type in base64 format - image/jpeg and base64 stringified data
     const fileExtension =
       matches[1].match(/\/(.*?)$/)[1] === 'octet-stream' ? 'png' : matches[1].match(/\/(.*?)$/)[1];
+
+    const fileNameWithExtension = `image-${shortid.generate()}.${fileExtension}`;
+
+    this.lastMediaId += 1;
+
+    return { id: this.lastMediaId, fileContent: base64FileContent, fileNameWithExtension };
+  }
+
+  createMediaFileLocal(filePath) {
+    console.log('createMediaFileLocal', filePath);
+    if (!fs.existsSync(filePath)) {
+      console.warn('image file not found', filePath);
+      throw new Error(`image file not found ${filePath}`);
+    }
+    console.log('base64FileContent start read');
+    const base64FileContent = fs.readFileSync(filePath, { encoding: 'base64' });
+    console.log('base64FileContent', base64FileContent);
+    // matches array contains file type in base64 format - image/jpeg and base64 stringified data
+    const fileExtension = 'png';
 
     const fileNameWithExtension = `image-${shortid.generate()}.${fileExtension}`;
 

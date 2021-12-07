@@ -7,11 +7,13 @@ import isVText from 'virtual-dom/vnode/is-vtext';
 // import * as HTMLToVDOM_ from 'html-to-vdom';
 import escape from 'escape-html';
 import sizeOf from 'image-size';
+import fs from 'fs';
 
 // FIXME: remove the cyclic dependency
 // eslint-disable-next-line import/no-cycle
 import * as xmlBuilder from './xml-builder';
 import namespaces from './namespaces';
+import { parseUrlParams } from '../utils/utils';
 
 // const HTMLToVDOM = HTMLToVDOM_;
 const convertHTML = require('html-to-vdom')({
@@ -21,30 +23,34 @@ const convertHTML = require('html-to-vdom')({
 
 // eslint-disable-next-line consistent-return, no-shadow
 export const buildImage = (docxDocumentInstance, vNode, maximumWidth = null) => {
+  console.warn('buildImage');
+  const params = parseUrlParams(vNode.properties.src);
+  console.warn('filePath', params.filePath, decodeURIComponent(params.filePath));
   let response = null;
   try {
     // libtidy encodes the image src
-    response = docxDocumentInstance.createMediaFile(decodeURIComponent(vNode.properties.src));
+    response = docxDocumentInstance.createMediaFileLocal(decodeURIComponent(params.filePath));
   } catch (error) {
     // NOOP
   }
+  console.warn('response', response);
   if (response) {
     docxDocumentInstance.zip
       .folder('word')
       .folder('media')
-      .file(response.fileNameWithExtension, Buffer.from(response.fileContent, 'base64'), {
+      .file('test.png', fs.readFileSync(params.filePath), {
         createFolders: false,
       });
 
     const documentRelsId = docxDocumentInstance.createDocumentRelationships(
       docxDocumentInstance.relationshipFilename,
       'image',
-      `media/${response.fileNameWithExtension}`,
+      `media/test.png`,
       'Internal'
     );
 
-    const imageBuffer = Buffer.from(response.fileContent, 'base64');
-    const imageProperties = sizeOf(imageBuffer);
+    // const imageBuffer = Buffer.from(response.fileContent, 'base64');
+    const imageProperties = sizeOf(params.filePath);
 
     const imageFragment = xmlBuilder.buildParagraph(
       vNode,
@@ -161,6 +167,8 @@ function findXMLEquivalent(docxDocumentInstance, vNode, xmlFragment) {
     xmlFragment.import(paragraphFragment);
     return;
   }
+
+  console.log('vNode.tagName', vNode.tagName);
 
   switch (vNode.tagName) {
     case 'h1':
@@ -303,6 +311,7 @@ export function convertVTreeToXML(docxDocumentInstance, vTree, xmlFragment) {
 
 function renderDocumentFile(docxDocumentInstance) {
   const vTree = convertHTML(docxDocumentInstance.htmlString);
+  console.log('vTree', vTree);
 
   const xmlFragment = fragment({
     namespaceAlias: { w: namespaces.w },

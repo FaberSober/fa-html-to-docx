@@ -1241,6 +1241,11 @@ decamelize@^1.1.0, decamelize@^1.2.0:
   resolved "https://registry.npmmirror.com/decamelize/download/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
 
+decode-uri-component@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.nlark.com/decode-uri-component/download/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
+  integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+
 dedent@^0.7.0:
   version "0.7.0"
   resolved "https://registry.nlark.com/dedent/download/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
@@ -1807,6 +1812,11 @@ fill-range@^7.0.1:
   integrity sha1-GRmmp8df44ssfHflGYU12prN2kA=
   dependencies:
     to-regex-range "^5.0.1"
+
+filter-obj@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.nlark.com/filter-obj/download/filter-obj-1.1.0.tgz?cache=0&sync_timestamp=1630003988020&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ffilter-obj%2Fdownload%2Ffilter-obj-1.1.0.tgz#9b311112bc6c6127a16e016c6c5d7f19e0805c5b"
+  integrity sha1-mzERErxsYSehbgFsbF1/GeCAXFs=
 
 find-up@^2.0.0, find-up@^2.1.0:
   version "2.1.0"
@@ -3532,6 +3542,16 @@ q@^1.5.1:
   resolved "https://registry.nlark.com/q/download/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+query-string@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.nlark.com/query-string/download/query-string-7.0.1.tgz#45bd149cf586aaa582dffc7ec7a8ad97dd02f75d"
+  integrity sha1-Rb0UnPWGqqWC3/x+x6itl90C910=
+  dependencies:
+    decode-uri-component "^0.2.0"
+    filter-obj "^1.1.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
+
 queue@6.0.1:
   version "6.0.1"
   resolved "https://registry.nlark.com/queue/download/queue-6.0.1.tgz#abd5a5b0376912f070a25729e0b6a7d565683791"
@@ -4025,6 +4045,11 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.npmmirror.com/spdx-license-ids/download/spdx-license-ids-3.0.11.tgz?cache=0&sync_timestamp=1636978510592&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fspdx-license-ids%2Fdownload%2Fspdx-license-ids-3.0.11.tgz#50c0d8c40a14ec1bf449bae69a0ea4685a9d9f95"
   integrity sha512-Ctl2BrFiM0X3MANYgj3CkygxhRmr9mi6xhejbdO960nF6EDJApTYpn0BQnDKlnNBULKiCN1n3w9EBkHK8ZWg+g==
 
+split-on-first@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/split-on-first/download/split-on-first-1.1.0.tgz?cache=0&sync_timestamp=1618467023656&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsplit-on-first%2Fdownload%2Fsplit-on-first-1.1.0.tgz#f610afeee3b12bce1d0c30425e76398b78249a5f"
+  integrity sha1-9hCv7uOxK84dDDBCXnY5i3gkml8=
+
 split2@^2.0.0:
   version "2.2.0"
   resolved "https://registry.npmmirror.com/split2/download/split2-2.2.0.tgz?cache=0&sync_timestamp=1635305175413&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fsplit2%2Fdownload%2Fsplit2-2.2.0.tgz#186b2575bcf83e85b7d18465756238ee4ee42493"
@@ -4071,6 +4096,11 @@ standard-version@^8.0.0:
     semver "^7.1.1"
     stringify-package "^1.0.1"
     yargs "^15.3.1"
+
+strict-uri-encode@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/strict-uri-encode/download/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
+  integrity sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
 
 string-argv@0.3.1:
   version "0.3.1"

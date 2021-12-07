@@ -4,7 +4,7 @@ const fs = require('fs');
 // const HTMLtoDOCX = require('html-to-docx');
 const HTMLtoDOCX = require('../dist/html-to-docx.umd');
 
-const filePath = './example.docx';
+const filePath = './example/example.docx';
 
 const htmlString = `<!DOCTYPE html>
 <html lang="en">
@@ -14,11 +14,15 @@ const htmlString = `<!DOCTYPE html>
     </head>
     <body>
         <div>
-            <p>Taken from wikipedia</p>
+            <p>Taken from wikipedia测试图片</p>
             <img
                 src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
                 alt="Red dot"
             />
+        </div>
+        <div>
+            <span>你好</div>
+            <span style="float: right;">你好</span>
         </div>
         <div>
             <h1>This is heading 1</h1>
