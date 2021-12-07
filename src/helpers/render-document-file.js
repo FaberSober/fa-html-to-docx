@@ -33,7 +33,7 @@ export const buildImage = (docxDocumentInstance, vNode, maximumWidth = null) => 
   } catch (error) {
     // NOOP
   }
-  console.warn('response', response);
+  // console.warn('response', response);
   if (response) {
     docxDocumentInstance.zip
       .folder('word')
